@@ -45,7 +45,7 @@ const replyMessage = (message) => {
     message.reply()
     .then(() => {
       if (result.action && result.action.slug === 'repo-information' && result.action.done) {
-        return projects.find(result.getMemory('proj-purpose').raw, result.getMemory('proj-lang').raw)
+        return projects.find(result.getMemory('proj-purpose').value, result.getMemory('proj-lang').value)
           .then(res => {
             console.log('answer: ', res)
             message.addReply(res)
