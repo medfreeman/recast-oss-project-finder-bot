@@ -1,7 +1,7 @@
 {
-  "name": "Recast-ai-starter-kit",
+  "name": "recast-oss-project-finder-bot",
   "version": "1.0.0",
-  "description": "A bot built with Recast.AI",
+  "description": "A bot allowing to find and compare open source projects based on purpose (supports github, future plans for gitlab and bitbucket)",
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec babel-node -- src/server.js",
