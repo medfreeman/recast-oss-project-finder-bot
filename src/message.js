@@ -5,6 +5,8 @@
 
 const recastai = require('recastai')
 
+const projects = require('./projects')
+
 // This function is the core of the bot behaviour
 const replyMessage = (message) => {
   // Instantiate Recast.AI SDK, just for request service
@@ -42,7 +44,14 @@ const replyMessage = (message) => {
     // Send all replies
     message.reply()
     .then(() => {
-      // Do some code after sending messages
+      if (result.action && result.action.slug === 'repo-information' && result.action.done) {
+        return projects.find(result.getMemory('proj-purpose').raw, result.getMemory('proj-lang').raw)
+          .then(res => {
+            console.log('answer: ', res)
+            message.addReply(res)
+            return message.reply()
+           })
+      }
     })
     .catch(err => {
       console.error('Error while sending message to channel', err)
